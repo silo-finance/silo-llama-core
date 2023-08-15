@@ -1,0 +1,182 @@
+{
+  "address": "0x92d238366dc5EEB63926f61Df208DbE923D5FEC0",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidAsset",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidCalculationResult",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "CRV_USD",
+      "outputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "TRI_CRV_POOL",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "WETH",
+      "outputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_asset",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_crvUsdToBuy",
+          "type": "uint256"
+        }
+      ],
+      "name": "towardsAsset",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "tokenOut",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "wethIn",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_asset",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_crvUsdToSell",
+          "type": "uint256"
+        }
+      ],
+      "name": "towardsNative",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "tokenOut",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amountOut",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x99c471be0fd223da0cfba60db8f2880a3026b3663848451dcdcc0498a91d37f5",
+  "receipt": {
+    "to": null,
+    "from": "0x6d228Fa4daD2163056A48Fc2186d716f5c65E89A",
+    "contractAddress": "0x92d238366dc5EEB63926f61Df208DbE923D5FEC0",
+    "transactionIndex": 84,
+    "gasUsed": "449329",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x36e5dd7eb92c791da4aca55c97488480360759c33cee090c4e3ad6b85275aba6",
+    "transactionHash": "0x99c471be0fd223da0cfba60db8f2880a3026b3663848451dcdcc0498a91d37f5",
+    "logs": [],
+    "blockNumber": 17919008,
+    "cumulativeGasUsed": "11828911",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "4d862d4d98364fe98bae33f4ae137024",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.13+commit.abaa5c0e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"InvalidAsset\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidCalculationResult\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"CRV_USD\",\"outputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"TRI_CRV_POOL\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"WETH\",\"outputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_crvUsdToBuy\",\"type\":\"uint256\"}],\"name\":\"towardsAsset\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"tokenOut\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"wethIn\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_crvUsdToSell\",\"type\":\"uint256\"}],\"name\":\"towardsNative\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"tokenOut\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amountOut\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"crvUSD Magician IT IS NOT PART OF THE PROTOCOL. SILO CREATED THIS TOOL, MOSTLY AS AN EXAMPLE.\",\"kind\":\"dev\",\"methods\":{\"towardsAsset(address,uint256)\":{\"params\":{\"_amount\":\"Amount of the `_asset`\",\"_asset\":\"Asset to be wrapped\"},\"returns\":{\"tokenOut\":\"A token that the `_asset` has been converted to\",\"wethIn\":\"Amount of the quote token that we spent to get `_amoun` of the `_asset`\"}},\"towardsNative(address,uint256)\":{\"params\":{\"_amount\":\"Amount of the `_asset`\",\"_asset\":\"Asset to be unwrapped\"},\"returns\":{\"amountOut\":\"Amount of the `tokenOut` that we received\",\"tokenOut\":\"A token that the `_asset` has been converted to\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"towardsAsset(address,uint256)\":{\"notice\":\"Performs operation opposit to `towardsNative`\"},\"towardsNative(address,uint256)\":{\"notice\":\"Operates to unwrap an `_asset`\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/liquidation/magicians/crvUSD/CrvUSDViaTriCrvMagicianETH.sol\":\"CrvUSDViaTriCrvMagicianETH\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts v4.4.1 (token/ERC20/IERC20.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Interface of the ERC20 standard as defined in the EIP.\\n */\\ninterface IERC20 {\\n    /**\\n     * @dev Returns the amount of tokens in existence.\\n     */\\n    function totalSupply() external view returns (uint256);\\n\\n    /**\\n     * @dev Returns the amount of tokens owned by `account`.\\n     */\\n    function balanceOf(address account) external view returns (uint256);\\n\\n    /**\\n     * @dev Moves `amount` tokens from the caller's account to `recipient`.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transfer(address recipient, uint256 amount) external returns (bool);\\n\\n    /**\\n     * @dev Returns the remaining number of tokens that `spender` will be\\n     * allowed to spend on behalf of `owner` through {transferFrom}. This is\\n     * zero by default.\\n     *\\n     * This value changes when {approve} or {transferFrom} are called.\\n     */\\n    function allowance(address owner, address spender) external view returns (uint256);\\n\\n    /**\\n     * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * IMPORTANT: Beware that changing an allowance with this method brings the risk\\n     * that someone may use both the old and the new allowance by unfortunate\\n     * transaction ordering. One possible solution to mitigate this race\\n     * condition is to first reduce the spender's allowance to 0 and set the\\n     * desired value afterwards:\\n     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\\n     *\\n     * Emits an {Approval} event.\\n     */\\n    function approve(address spender, uint256 amount) external returns (bool);\\n\\n    /**\\n     * @dev Moves `amount` tokens from `sender` to `recipient` using the\\n     * allowance mechanism. `amount` is then deducted from the caller's\\n     * allowance.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transferFrom(\\n        address sender,\\n        address recipient,\\n        uint256 amount\\n    ) external returns (bool);\\n\\n    /**\\n     * @dev Emitted when `value` tokens are moved from one account (`from`) to\\n     * another (`to`).\\n     *\\n     * Note that `value` may be zero.\\n     */\\n    event Transfer(address indexed from, address indexed to, uint256 value);\\n\\n    /**\\n     * @dev Emitted when the allowance of a `spender` for an `owner` is set by\\n     * a call to {approve}. `value` is the new allowance.\\n     */\\n    event Approval(address indexed owner, address indexed spender, uint256 value);\\n}\\n\",\"keccak256\":\"0x61437cb513a887a1bbad006e7b1c8b414478427d33de47c5600af3c748f108da\",\"license\":\"MIT\"},\"contracts/liquidation/magicians/_common/libraries/CrvUSDToWethViaTriCrvPoolLib.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity 0.8.13;\\n\\nimport \\\"@openzeppelin/contracts/token/ERC20/IERC20.sol\\\";\\n\\nimport \\\"../../interfaces/ICurvePoolLike256WithReturn.sol\\\";\\n\\n/// @dev Curve pool exchange\\n/// IT IS NOT PART OF THE PROTOCOL. SILO CREATED THIS TOOL, MOSTLY AS AN EXAMPLE.\\nlibrary CrvUSDToWethViaTriCrvPoolLib {\\n    uint256 constant public WETH_INDEX = 1;\\n    uint256 constant public CRV_USD_INDEX = 0;\\n\\n    uint256 constant public UNKNOWN_AMOUNT = 1;\\n\\n    function crvUsdToWethViaTriCrv(\\n        uint256 _amount,\\n        address _pool,\\n        IERC20 _crvUsd\\n    )\\n        internal\\n        returns (uint256 receivedWeth)\\n    {\\n        _crvUsd.approve(_pool, _amount);\\n\\n        receivedWeth = ICurvePoolLike256WithReturn(_pool).exchange(\\n            CRV_USD_INDEX,\\n            WETH_INDEX,\\n            _amount,\\n            UNKNOWN_AMOUNT\\n        );\\n    }\\n\\n    function wethToCrvUsdViaTriCrv(\\n        uint256 _amount,\\n        address _pool,\\n        IERC20 _weth\\n    )\\n        internal\\n        returns (uint256 receivedCrv)\\n    {\\n        _weth.approve(_pool, _amount);\\n\\n        receivedCrv = ICurvePoolLike256WithReturn(_pool).exchange(\\n            WETH_INDEX,\\n            CRV_USD_INDEX,\\n            _amount,\\n            UNKNOWN_AMOUNT\\n        );\\n    }\\n}\\n\",\"keccak256\":\"0x8469ecbe2acb9210ea88494b5a9780eadf15042dc6438a8fa1eea87cd38cdbe8\",\"license\":\"MIT\"},\"contracts/liquidation/magicians/crvUSD/CrvUSDViaTriCrvMagician.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity 0.8.13;\\n\\nimport \\\"@openzeppelin/contracts/token/ERC20/IERC20.sol\\\";\\n\\nimport \\\"../interfaces/IMagician.sol\\\";\\nimport \\\"../_common/libraries/CrvUSDToWethViaTriCrvPoolLib.sol\\\";\\n\\ninterface ICrvPoolLike {\\n    // solhint-disable func-name-mixedcase\\n    function get_dx(uint256 i, uint256 j, uint256 dy) external view returns (uint256);\\n    function get_dy(uint256 i, uint256 j, uint256 dx) external view returns (uint256);\\n}\\n\\n/// @dev crvUSD Magician\\n/// IT IS NOT PART OF THE PROTOCOL. SILO CREATED THIS TOOL, MOSTLY AS AN EXAMPLE.\\nabstract contract CrvUSDViaTriCrvMagician is IMagician {\\n    using CrvUSDToWethViaTriCrvPoolLib for uint256;\\n\\n    error InvalidAsset();\\n    error InvalidCalculationResult();\\n\\n    // solhint-disable var-name-mixedcase\\n    address immutable public TRI_CRV_POOL;\\n\\n    IERC20 immutable public WETH;\\n    IERC20 immutable public CRV_USD;\\n    // solhint-enable var-name-mixedcase\\n\\n    constructor(\\n        address _triCrvPool,\\n        address _weth,\\n        address _crvUsd\\n    ) {\\n        TRI_CRV_POOL = _triCrvPool;\\n        WETH = IERC20(_weth);\\n        CRV_USD = IERC20(_crvUsd);\\n    }\\n\\n    /// @inheritdoc IMagician\\n    function towardsNative(address _asset, uint256 _crvUsdToSell)\\n        external\\n        virtual\\n        returns (address tokenOut, uint256 amountOut)\\n    {\\n        // crvUSD -> WETH\\n        if (_asset != address(CRV_USD)) revert InvalidAsset();\\n\\n        amountOut = _crvUsdToSell.crvUsdToWethViaTriCrv(TRI_CRV_POOL, CRV_USD);\\n\\n        tokenOut = address(WETH);\\n    }\\n\\n    /// @inheritdoc IMagician\\n    function towardsAsset(address _asset, uint256 _crvUsdToBuy)\\n        external\\n        virtual\\n        returns (address tokenOut, uint256 wethIn)\\n    {\\n        // WETH -> crvUSD\\n        if (_asset != address(CRV_USD)) revert InvalidAsset();\\n\\n        wethIn = _getDx(_crvUsdToBuy);\\n\\n        uint256 expectedCrvUsd = ICrvPoolLike(TRI_CRV_POOL).get_dy(\\n            CrvUSDToWethViaTriCrvPoolLib.WETH_INDEX,\\n            CrvUSDToWethViaTriCrvPoolLib.CRV_USD_INDEX,\\n            wethIn\\n        );\\n\\n        // get_dx returns such a WETH amount that when we will do an exchange,\\n        // we receive ~0.0001% less than we need for the liquidation. It is dust,\\n        // the liquidation will fail as we need to repay the exact amount.\\n        // To compensate for this, we will increase WETH a little bit.\\n        // It is fine if we will buy ~0.0001% more.\\n        if (expectedCrvUsd < _crvUsdToBuy) {\\n            uint256 oneCrvUsd = 1e18;\\n\\n            uint256 wethForOneCrv = ICrvPoolLike(TRI_CRV_POOL).get_dy(\\n                CrvUSDToWethViaTriCrvPoolLib.CRV_USD_INDEX,\\n                CrvUSDToWethViaTriCrvPoolLib.WETH_INDEX,\\n                oneCrvUsd\\n            );\\n\\n            // it is impossible that we will need to spend ETH close to uint256 max\\n            unchecked { wethIn += wethForOneCrv / 1e3; }\\n        }\\n\\n        wethIn.wethToCrvUsdViaTriCrv(TRI_CRV_POOL, WETH);\\n\\n        tokenOut = address(CRV_USD);\\n    }\\n\\n    function _getDx(uint256 _crvToBuy) internal view returns (uint256 wethIn) {\\n        return ICrvPoolLike(TRI_CRV_POOL).get_dx(\\n            CrvUSDToWethViaTriCrvPoolLib.WETH_INDEX,\\n            CrvUSDToWethViaTriCrvPoolLib.CRV_USD_INDEX,\\n            _crvToBuy\\n        );\\n    }\\n}\\n\",\"keccak256\":\"0x3737b1e743455827a99429744adbd7c17355d64e7cb8338fd9931b8f86b00298\",\"license\":\"MIT\"},\"contracts/liquidation/magicians/crvUSD/CrvUSDViaTriCrvMagicianETH.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity 0.8.13;\\n\\nimport \\\"./CrvUSDViaTriCrvMagician.sol\\\";\\n\\n/// @dev crvUSD Magician\\n/// IT IS NOT PART OF THE PROTOCOL. SILO CREATED THIS TOOL, MOSTLY AS AN EXAMPLE.\\ncontract CrvUSDViaTriCrvMagicianETH is CrvUSDViaTriCrvMagician {\\n    constructor() CrvUSDViaTriCrvMagician(\\n        0x4eBdF703948ddCEA3B11f675B4D1Fba9d2414A14, // TRI_CRV_POOL\\n        0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2, // WETH\\n        0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E  // CRV_USD\\n    ) {}\\n}\\n\",\"keccak256\":\"0x6b412114d40396da2524846d1603b73be4698185f38c175d41db5bb498a288df\",\"license\":\"MIT\"},\"contracts/liquidation/magicians/interfaces/ICurvePoolLike256WithReturn.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity 0.8.13;\\n\\ninterface ICurvePoolLike256WithReturn {\\n    // solhint-disable func-name-mixedcase\\n    function exchange(uint256 i, uint256 j, uint256 dx, uint256 minDy) external returns (uint256);\\n    function get_dy(uint256 i, uint256 j, uint256 dx) external view returns (uint256);\\n    // solhint-enable func-name-mixedcase\\n}\\n\",\"keccak256\":\"0xc8f9e8ae8f9edbba67ea13eb887a30fb35da84c527d46e11cded157ac9525a30\",\"license\":\"MIT\"},\"contracts/liquidation/magicians/interfaces/IMagician.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity >=0.7.6 <0.9.0;\\n\\n/// @notice Extension for the Liquidation helper to support such operations as unwrapping\\ninterface IMagician {\\n    /// @notice Operates to unwrap an `_asset`\\n    /// @param _asset Asset to be unwrapped\\n    /// @param _amount Amount of the `_asset`\\n    /// @return tokenOut A token that the `_asset` has been converted to\\n    /// @return amountOut Amount of the `tokenOut` that we received\\n    function towardsNative(address _asset, uint256 _amount) external returns (address tokenOut, uint256 amountOut);\\n\\n    /// @notice Performs operation opposit to `towardsNative`\\n    /// @param _asset Asset to be wrapped\\n    /// @param _amount Amount of the `_asset`\\n    /// @return tokenOut A token that the `_asset` has been converted to\\n    /// @return amountOut Amount of the quote token that we spent to get `_amoun` of the `_asset`\\n    function towardsAsset(address _asset, uint256 _amount) external returns (address tokenOut, uint256 amountOut);\\n}\\n\",\"keccak256\":\"0xb48290785d1be3d5b1ed767ee628faa69ee7ded238de776d66b9e0795536ff50\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x60e060405234801561001057600080fd5b50734ebdf703948ddcea3b11f675b4d1fba9d2414a1460805273c02aaa39b223fe8d0a0e5c4f27ead9083c756cc260a05273f939e0a03fb07f59a73314e73794be0e57ac1b4e60c05260805160a05160c0516107346100d36000396000818160ea01528181610138015281816101af01528181610203015261040001526000818160ab015281816101d501526103d90152600081816101110152818161018e0152818161028d01528181610332015281816103b8015261055101526107346000f3fe608060405234801561001057600080fd5b50600436106100575760003560e01c806321ebbf011461005c5780636ea477da14610093578063ad5c4648146100a6578063b10d3a18146100e5578063c7dbfb641461010c575b600080fd5b61006f61006a366004610684565b610133565b604080516001600160a01b0390931683526020830191909152015b60405180910390f35b61006f6100a1366004610684565b6101fe565b6100cd7f000000000000000000000000000000000000000000000000000000000000000081565b6040516001600160a01b03909116815260200161008a565b6100cd7f000000000000000000000000000000000000000000000000000000000000000081565b6100cd7f000000000000000000000000000000000000000000000000000000000000000081565b6000807f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316846001600160a01b03161461018857604051636448d6e960e11b815260040160405180910390fd5b6101d3837f00000000000000000000000000000000000000000000000000000000000000007f0000000000000000000000000000000000000000000000000000000000000000610429565b7f00000000000000000000000000000000000000000000000000000000000000009590945092505050565b6000807f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316846001600160a01b03161461025357604051636448d6e960e11b815260040160405180910390fd5b61025c8361052a565b60405163556d6e9f60e01b815260016004820152600060248201819052604482018390529192506001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000169063556d6e9f90606401602060405180830381865afa1580156102d4573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906102f891906106bc565b9050838110156103b25760405163556d6e9f60e01b815260006004820181905260016024830152670de0b6b3a764000060448301819052917f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03169063556d6e9f90606401602060405180830381865afa158015610381573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906103a591906106bc565b6103e89004939093019250505b6103fd827f00000000000000000000000000000000000000000000000000000000000000007f00000000000000000000000000000000000000000000000000000000000000006105ca565b507f00000000000000000000000000000000000000000000000000000000000000009250509250929050565b60405163095ea7b360e01b81526001600160a01b038381166004830152602482018590526000919083169063095ea7b3906044016020604051808303816000875af115801561047c573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906104a091906106d5565b50604051630b68372160e31b8152600060048201526001602482018190526044820186905260648201526001600160a01b03841690635b41b908906084015b6020604051808303816000875af11580156104fe573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061052291906106bc565b949350505050565b604051631bf69d3d60e11b81526001600482015260006024820181905260448201839052907f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316906337ed3a7a90606401602060405180830381865afa1580156105a0573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906105c491906106bc565b92915050565b60405163095ea7b360e01b81526001600160a01b038381166004830152602482018590526000919083169063095ea7b3906044016020604051808303816000875af115801561061d573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061064191906106d5565b50604051630b68372160e31b8152600160048201819052600060248301526044820186905260648201526001600160a01b03841690635b41b908906084016104df565b6000806040838503121561069757600080fd5b82356001600160a01b03811681146106ae57600080fd5b946020939093013593505050565b6000602082840312156106ce57600080fd5b5051919050565b6000602082840312156106e757600080fd5b815180151581146106f757600080fd5b939250505056fea264697066735822122090649d46b77ddc00be62ee68c3ae61cdd3efaebdb21220d48fdc3bc87299dce864736f6c634300080d0033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100575760003560e01c806321ebbf011461005c5780636ea477da14610093578063ad5c4648146100a6578063b10d3a18146100e5578063c7dbfb641461010c575b600080fd5b61006f61006a366004610684565b610133565b604080516001600160a01b0390931683526020830191909152015b60405180910390f35b61006f6100a1366004610684565b6101fe565b6100cd7f000000000000000000000000000000000000000000000000000000000000000081565b6040516001600160a01b03909116815260200161008a565b6100cd7f000000000000000000000000000000000000000000000000000000000000000081565b6100cd7f000000000000000000000000000000000000000000000000000000000000000081565b6000807f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316846001600160a01b03161461018857604051636448d6e960e11b815260040160405180910390fd5b6101d3837f00000000000000000000000000000000000000000000000000000000000000007f0000000000000000000000000000000000000000000000000000000000000000610429565b7f00000000000000000000000000000000000000000000000000000000000000009590945092505050565b6000807f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316846001600160a01b03161461025357604051636448d6e960e11b815260040160405180910390fd5b61025c8361052a565b60405163556d6e9f60e01b815260016004820152600060248201819052604482018390529192506001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000169063556d6e9f90606401602060405180830381865afa1580156102d4573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906102f891906106bc565b9050838110156103b25760405163556d6e9f60e01b815260006004820181905260016024830152670de0b6b3a764000060448301819052917f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03169063556d6e9f90606401602060405180830381865afa158015610381573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906103a591906106bc565b6103e89004939093019250505b6103fd827f00000000000000000000000000000000000000000000000000000000000000007f00000000000000000000000000000000000000000000000000000000000000006105ca565b507f00000000000000000000000000000000000000000000000000000000000000009250509250929050565b60405163095ea7b360e01b81526001600160a01b038381166004830152602482018590526000919083169063095ea7b3906044016020604051808303816000875af115801561047c573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906104a091906106d5565b50604051630b68372160e31b8152600060048201526001602482018190526044820186905260648201526001600160a01b03841690635b41b908906084015b6020604051808303816000875af11580156104fe573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061052291906106bc565b949350505050565b604051631bf69d3d60e11b81526001600482015260006024820181905260448201839052907f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316906337ed3a7a90606401602060405180830381865afa1580156105a0573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906105c491906106bc565b92915050565b60405163095ea7b360e01b81526001600160a01b038381166004830152602482018590526000919083169063095ea7b3906044016020604051808303816000875af115801561061d573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061064191906106d5565b50604051630b68372160e31b8152600160048201819052600060248301526044820186905260648201526001600160a01b03841690635b41b908906084016104df565b6000806040838503121561069757600080fd5b82356001600160a01b03811681146106ae57600080fd5b946020939093013593505050565b6000602082840312156106ce57600080fd5b5051919050565b6000602082840312156106e757600080fd5b815180151581146106f757600080fd5b939250505056fea264697066735822122090649d46b77ddc00be62ee68c3ae61cdd3efaebdb21220d48fdc3bc87299dce864736f6c634300080d0033",
+  "devdoc": {
+    "details": "crvUSD Magician IT IS NOT PART OF THE PROTOCOL. SILO CREATED THIS TOOL, MOSTLY AS AN EXAMPLE.",
+    "kind": "dev",
+    "methods": {
+      "towardsAsset(address,uint256)": {
+        "params": {
+          "_amount": "Amount of the `_asset`",
+          "_asset": "Asset to be wrapped"
+        },
+        "returns": {
+          "tokenOut": "A token that the `_asset` has been converted to",
+          "wethIn": "Amount of the quote token that we spent to get `_amoun` of the `_asset`"
+        }
+      },
+      "towardsNative(address,uint256)": {
+        "params": {
+          "_amount": "Amount of the `_asset`",
+          "_asset": "Asset to be unwrapped"
+        },
+        "returns": {
+          "amountOut": "Amount of the `tokenOut` that we received",
+          "tokenOut": "A token that the `_asset` has been converted to"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "towardsAsset(address,uint256)": {
+        "notice": "Performs operation opposit to `towardsNative`"
+      },
+      "towardsNative(address,uint256)": {
+        "notice": "Operates to unwrap an `_asset`"
+      }
+    },
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}
