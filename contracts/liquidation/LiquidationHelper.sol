@@ -24,7 +24,7 @@ import "./LiquidationRepay.sol";
 
 /// @notice LiquidationHelper IS NOT PART OF THE PROTOCOL. SILO CREATED THIS TOOL, MOSTLY AS AN EXAMPLE.
 /// see https://github.com/silo-finance/liquidation#readme for details how liquidation process should look like
-contract LiquidationHelper is ILiquidationHelper, IFlashLiquidationReceiver, ZeroExSwap, LiquidationRepay {
+contract LiquidationHelper is ILiquidationHelper, IFlashLiquidationReceiver, ZeroExSwap, LiquidationRepay, Ownable {
     using RevertBytes for bytes;
     using SafeERC20 for IERC20;
     using Address for address payable;
@@ -45,6 +45,9 @@ contract LiquidationHelper is ILiquidationHelper, IFlashLiquidationReceiver, Zer
     IPriceProvidersRepository public immutable PRICE_PROVIDERS_REPOSITORY; // solhint-disable-line var-name-mixedcase
     SiloLens public immutable LENS; // solhint-disable-line var-name-mixedcase
     IERC20 public immutable QUOTE_TOKEN; // solhint-disable-line var-name-mixedcase
+
+    /// @dev token receiver will get all rewards from liquidation, does not matter who will execute tx
+    address payable public immutable TOKENS_RECEIVER; // solhint-disable-line var-name-mixedcase
 
     ChainlinkV3PriceProvider public immutable CHAINLINK_PRICE_PROVIDER; // solhint-disable-line var-name-mixedcase
 
@@ -72,7 +75,7 @@ contract LiquidationHelper is ILiquidationHelper, IFlashLiquidationReceiver, Zer
 
     event SwapperConfigured(IPriceProvider provider, ISwapper swapper);
     event MagicianConfigured(address asset, IMagician magician);
-    
+
     /// @dev event emitted on user liquidation
     /// @param silo Silo where liquidation happen
     /// @param user User that been liquidated
@@ -88,7 +91,8 @@ contract LiquidationHelper is ILiquidationHelper, IFlashLiquidationReceiver, Zer
         address _exchangeProxy,
         MagicianConfig[] memory _magicians,
         SwapperConfig[] memory _swappers,
-        uint256 _baseCost
+        uint256 _baseCost,
+        address payable _tokensReceiver
     ) ZeroExSwap(_exchangeProxy) {
         if (!Ping.pong(SiloLens(_lens).lensPing)) revert InvalidSiloLens();
 
@@ -110,6 +114,8 @@ contract LiquidationHelper is ILiquidationHelper, IFlashLiquidationReceiver, Zer
 
         QUOTE_TOKEN = IERC20(PRICE_PROVIDERS_REPOSITORY.quoteToken());
         _BASE_TX_COST = _baseCost;
+
+        TOKENS_RECEIVER = _tokensReceiver;
     }
 
     receive() external payable {}
@@ -126,7 +132,7 @@ contract LiquidationHelper is ILiquidationHelper, IFlashLiquidationReceiver, Zer
         address[] memory users = new address[](1);
         users[0] = _user;
 
-        _silo.flashLiquidate(users, abi.encode(msg.sender, gasStart, _scenario, _swapsInputs0x));
+        _silo.flashLiquidate(users, abi.encode(gasStart, _scenario, _swapsInputs0x));
     }
 
     function setSwappers(SwapperConfig[] calldata _swappers) external onlyOwner {
@@ -151,12 +157,13 @@ contract LiquidationHelper is ILiquidationHelper, IFlashLiquidationReceiver, Zer
     ) external override {
         if (!SILO_REPOSITORY.isSilo(msg.sender)) revert NotSilo();
 
+        address payable executor = TOKENS_RECEIVER;
+
         (
-            address payable executor,
             uint256 gasStart,
             LiquidationScenario scenario,
             SwapInput0x[] memory swapInputs
-        ) = abi.decode(_flashReceiverData, (address, uint256, LiquidationScenario, SwapInput0x[]));
+        ) = abi.decode(_flashReceiverData, (uint256, LiquidationScenario, SwapInput0x[]));
 
         if (swapInputs.length != 0) {
             _execute0x(swapInputs);
@@ -172,19 +179,19 @@ contract LiquidationHelper is ILiquidationHelper, IFlashLiquidationReceiver, Zer
 
         // I needed to move some part of execution from from `_siloLiquidationCallbackExecution`,
         // because of "stack too deep" error
-        bool isFull0xWithChange = scenario.isFull0xWithChange();
-        bool calculateEarnings = scenario.calculateEarnings();
+        bool estimatedEarnings = scenario.isFull0x() || scenario.isFull0xWithChange();
+        bool checkForProfit = scenario.calculateEarnings();
 
-        if (isFull0xWithChange) {
-            earned = _estimateEarningsAndTransferChange(_assets, _shareAmountsToRepaid, executor, calculateEarnings);
+        if (estimatedEarnings) {
+            earned = _estimateEarningsAndTransferChange(_assets, _shareAmountsToRepaid, executor, checkForProfit);
         } else {
             _transferNative(executor, earned);
         }
 
-        emit LiquidationExecuted(msg.sender, _user, earned, isFull0xWithChange);
+        emit LiquidationExecuted(msg.sender, _user, earned, estimatedEarnings);
 
         // do not check for profitability when forcing
-        if (calculateEarnings) {
+        if (checkForProfit) {
             ensureTxIsProfitable(gasStart, earned);
         }
     }
@@ -280,12 +287,11 @@ contract LiquidationHelper is ILiquidationHelper, IFlashLiquidationReceiver, Zer
         uint256[] calldata _receivedCollaterals,
         uint256[] calldata _shareAmountsToRepaid
     ) internal returns (uint256 earned) {
-        if (_scenario.isFull0x()) {
-            return _runFull0xScenario(
-                _user,
-                _assets,
-                _shareAmountsToRepaid
-            );
+        if (_scenario.isFull0x() || _scenario.isFull0xWithChange()) {
+            // we should have repay tokens ready to go
+            _repay(ISilo(msg.sender), _user, _assets, _shareAmountsToRepaid);
+            // change that left after repay will be send to `TOKENS_RECEIVER` by `_estimateEarningsAndTransferChange`
+            return 0;
         }
 
         if (_scenario.isInternal()) {
@@ -297,13 +303,6 @@ contract LiquidationHelper is ILiquidationHelper, IFlashLiquidationReceiver, Zer
             );
         }
 
-        if (_scenario.isFull0xWithChange()) {
-            // we should have repay tokens ready to repay
-            _repay(ISilo(msg.sender), _user, _assets, _shareAmountsToRepaid);
-            // change that left after repay will be send to `_liquidator` by `_estimateEarningsAndTransferChange`
-            return 0;
-        }
-
         if (_scenario.isCollateral0x()) {
             return _runCollateral0xScenario(
                 _user,
@@ -313,18 +312,6 @@ contract LiquidationHelper is ILiquidationHelper, IFlashLiquidationReceiver, Zer
         }
 
         revert InvalidScenario();
-    }
-
-    function _runFull0xScenario(
-        address _user,
-        address[] calldata _assets,
-        uint256[] calldata _shareAmountsToRepaid
-    ) internal returns (uint256 earned) {
-        // we should have repay tokens ready to repay
-        _repay(ISilo(msg.sender), _user, _assets, _shareAmountsToRepaid);
-
-        // we left with some change, let's try to swap to WETH
-        earned = _swapAssetsForQuote(_assets, _shareAmountsToRepaid);
     }
 
     function _runCollateral0xScenario(
@@ -424,21 +411,6 @@ contract LiquidationHelper is ILiquidationHelper, IFlashLiquidationReceiver, Zer
         _to.sendValue(_amount);
     }
 
-    function _swapAssetsForQuote(
-        address[] calldata _assets,
-        uint256[] calldata _amounts
-    ) internal returns (uint256 received) {
-        for (uint256 i = 0; i < _assets.length;) {
-            if (_amounts[i] != 0) {
-                uint256 amount = IERC20(_assets[i]).balanceOf(address(this));
-                received += _swapForQuote(_assets[i], amount);
-            }
-
-            // we will never have that many assets to overflow
-            unchecked { i++; }
-        }
-    }
-    
     /// @dev it swaps asset token for quote
     /// @param _asset address
     /// @param _amount exact amount of asset to swap
@@ -467,7 +439,8 @@ contract LiquidationHelper is ILiquidationHelper, IFlashLiquidationReceiver, Zer
         // no need for safe approval, because we always using 100%
         // Low level call needed to support non-standard `ERC20.approve` eg like `USDT.approve`
         // solhint-disable-next-line avoid-low-level-calls
-        _asset.call(abi.encodeCall(IERC20.approve, (swapper.spenderToApprove(), _amount)));
+        (bool success,) = _asset.call(abi.encodeCall(IERC20.approve, (swapper.spenderToApprove(), _amount)));
+        if (!success) revert ApprovalFailed();
 
         bytes memory callData = abi.encodeCall(ISwapper.swapAmountIn, (
             _asset, quoteToken, _amount, address(provider), _asset
